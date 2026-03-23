@@ -1,4 +1,5 @@
 package com.stu6136tyt.helloserver.controller;
+import com.stu6136tyt.helloserver.common.Result;
 import com.stu6136tyt.helloserver.entity.User;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     // 1. 获取用户信息 (查) - 使用 @GetMapping 和 @PathVariable
     @GetMapping("/{id}")
-    public String getUser(@PathVariable Long id) {
-        return "查询成功，正在返回ID为" + id + "的用户信息";
+    public Result<String> getUser(@PathVariable Long id) {
+                String data= "查询成功，正在返回ID为" + id + "的用户信息";
+                return Result.success(data);
     }
 
     // 2. 新增用户 (增) - 使用 @PostMapping 和 @RequestBody
