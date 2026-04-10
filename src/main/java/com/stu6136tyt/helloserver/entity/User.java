@@ -1,17 +1,15 @@
 package com.stu6136tyt.helloserver.entity;
 
-public class User {
-    private Long id;
-    private String name;
-    private Integer age;
-    //getter和setter
-    public Integer getAge() {
-        return age;
-    }
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+@TableName("sys_user") // 绑定数据库表名
+public class User {
+    @TableId(type = IdType.AUTO) // 主键自增
+    private Long id;
+    private String username;
+    private String password;
 
     public Long getId() {
         return id;
@@ -21,20 +19,21 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
     }
-    //无参
-    public User() {
+
+    public String getUsername() {
+        return username;
     }
-    //有参
-    public User(Long id, String name, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
+
+    public void setUsername(String username) {
+        this.username = username;
     }
+
+    // 请自行生成 Getter 和 Setter 方法
 }
