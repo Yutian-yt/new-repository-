@@ -10,7 +10,9 @@ public enum ResultCode {
     PASSWORD_ERROR(4003, "账号或密码错误"),
 
     //权限相关
-    TOKEN_INVALID(401,"登录凭证已缺失或过期，请重新登录");
+    TOKEN_INVALID(401,"登录凭证已缺失或过期，请重新登录"),
+
+    USER_INFO_INVALID(4004,"用户ID不能为空");
 
     private final Integer code;
     private final String msg;
