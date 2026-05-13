@@ -39,6 +39,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
                         // 放行 POST /api/users
                         .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
+                        // 放行 POST /api/chat
+                        .requestMatchers(HttpMethod.POST, "/api/chat").permitAll()
                         // 其他所有请求都必须先认证
                         .anyRequest().authenticated()
                 )
