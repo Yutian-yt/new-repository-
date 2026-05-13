@@ -9,6 +9,7 @@ import com.stu6136tyt.helloserver.entity.User;
 import com.stu6136tyt.helloserver.entity.UserInfo; // ✅ 修正：导入自定义的实体类
 import com.stu6136tyt.helloserver.mapper.UserMapper;
 import com.stu6136tyt.helloserver.mapper.UserInfoMapper; // ✅ 新增：注入 Mapper
+import com.stu6136tyt.helloserver.security.JwtUtil;
 import com.stu6136tyt.helloserver.service.UserService;
 import com.stu6136tyt.helloserver.vo.UserDetailVO;
 import org.springframework.beans.BeanUtils;
@@ -21,6 +22,9 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @Autowired
     private UserMapper userMapper;
@@ -66,7 +70,8 @@ public class UserServiceImpl implements UserService {
             return Result.error(ResultCode.PASSWORD_ERROR);
         }
 
-        return Result.success("登录成功！");
+        String jwt = jwtUtil.generateToken(userDTO.getUsername());
+        return Result.success(jwt);
     }
 
     @Override
